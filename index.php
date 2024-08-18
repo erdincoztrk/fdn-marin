@@ -21,18 +21,18 @@ include('head.php');
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="container">
-                    <div class="row" style="">
-                        <div class="col-md-7">
+                    <div class="row" style="d-none">
+                        <div class="col-md-7" style="d-none">
                             <div id="logoDetail" class="detail-box">
                                 <div id="logo">  </div>
-                                <h1 style="font-family: 'Beyonders', sans-serif; ">
+                                <h1 style="font-family: 'Beyonders', sans-serif; display:none;">
                                 <label> FDN </label> <br>
                                     <span style="margin-top:1rem;">
                         Marine
                       </span>
                                 </h1>
                                 <p>
-                                    Denizde özgürlüğün adı...
+                                    <!--Denizde özgürlüğün adı...-->
                                 </p>
                                 <div class="btn-box d-none">
                                     <a href="" class="btn-1">Confident 490</a>
@@ -47,7 +47,7 @@ include('head.php');
 
         </div>
     </div>
-    <div class="container idicator_container">
+    <div class="container idicator_container d-none">
         <ol class="carousel-indicators">
 
             <a href="https://www.instagram.com/fdnmarine/" target="_blank"
@@ -394,7 +394,7 @@ include('head.php');
     const video = document.querySelector('video');
     const image = document.createElement('img');
     image.src = 'images/fdn-marine-Photoroom.png'; // Resim yolunu buraya yazın
-
+    logoMove()
 
     video.addEventListener('ended', () => {
         video.style.display = 'none';
@@ -403,6 +403,5 @@ include('head.php');
         $(mainDiv).prepend('<img src="images/second-s-photo.jpeg" />')
     });
 
-    logoMove();
 
 </script>
