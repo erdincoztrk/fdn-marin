@@ -12,4 +12,5 @@ $googleMap = $_POST['googleMap'];
 $commArray = [$tel, $instagram, $facebook, $sahibinden, $city, $distinct, $adress, $googleMap];
 
 $db->query("DELETE FROM tbcommunication");
-$db->query("INSERT INTO tbcommunication (comm_tel, comm_instagram, comm_facebook, comm_sahibinden, comm_city, comm_distinct, comm_adress, comm_googlemap) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $commArray);
+$addQuery = $db->query("INSERT INTO tbcommunication (comm_tel, comm_instagram, comm_facebook, comm_sahibinden, comm_city, comm_distinct, comm_adress, comm_googlemap) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $commArray);
+echo $addQuery ? 'successful' : 'unsuccessful';
