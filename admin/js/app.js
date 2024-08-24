@@ -22,6 +22,10 @@ function dataMessage(data) {
     data == 'successful' ? smallNotice('İşlem Başarılı!', 'success') : smallNotice('İşlem Başarısız', 'error')
 }
 
+function ChangeTextArea(){
+    $('#bridge').val($('div[role=textbox]').html())
+}
+
 function setCommunication(form) {
     const file = 'db-transactions/communication-transactions.php';
     showLoader();
@@ -54,6 +58,18 @@ function setSiteSettings(form){
     $.ajax({
         url: file,
         type: 'POST',
+        data: $(form).serialize(),
+        success: (data) => {
+            dataMessage(data);
+        }
+    })
+}
+
+function setAddModel(form){
+    const file = 'db-transactions/addmodel-transactions.php';
+    $.ajax({
+        url: file,
+        type:'POST',
         data: $(form).serialize(),
         success: (data) => {
             dataMessage(data);
