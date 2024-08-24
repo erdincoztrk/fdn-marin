@@ -47,3 +47,16 @@ function setAboutUs(form) {
         }
     })
 }
+
+function setSiteSettings(form){
+    const file = 'db-transactions/settings-transactions.php';
+    showLoader();
+    $.ajax({
+        url: file,
+        type: 'POST',
+        data: $(form).serialize(),
+        success: (data) => {
+            dataMessage(data);
+        }
+    })
+}
