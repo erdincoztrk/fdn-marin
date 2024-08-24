@@ -1,92 +1,70 @@
-<?php  include 'header.php' ?>
+<?php
+include 'header.php';
+require_once('islemler/baglan.php');
+$db = new dbConnection();
+$getComm = $db->getRow("SELECT * FROM tbcommunication");
+?>
 <div class="container">
-<h4>İLETİŞİM BİLGİLERİ GÜNCELLEME
-  <small>
-<span>
-       <?php if(isset($_GET['islem'])){
-                  if($_GET['islem'] == "successfuly"){?>
-                    <label class="alert alert-success "> İŞLEM BAŞARILI </label>
-
-                <?php  } 
-                elseif($_GET['islem'] == "unsuccessfuly"){?>
-                  <label class="alert alert-danger "> İŞLEM BAŞARISIZ </label>
+<h4>İLETİŞİM BİLGİLERİ GÜNCELLEME</h4>
 
 
-               <?php } } ?>
-                </span>
-               </small>            
-</h4>
-
-
-<form action="islemler/islem.php" method="POST">
+<form action="islemler/islem.php" id="communicationForm">
 
    <div class="form-group">
     <label for="exampleFormControlInput1">Telefon Numarası</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="ayar_gsm" value="<?php echo $ayargetir['ayar_gsm'] ?>" >
+    <input type="text" class="form-control" name="tel" id="tel" value="<?=$getComm['comm_tel']?>" >
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Mail Adresi</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="ayar_mail" value="<?php echo $ayargetir['ayar_mail'] ?>">
+    <input type="text" class="form-control" name="mail" id="mail" value="<?=$getComm['comm_mail']?>">
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlInput1">Instagram</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="ayar_instagram" value="<?php echo $ayargetir['ayar_instagram'] ?>">
+    <input type="text" class="form-control" name="instagram" id="instagram" value="<?=$getComm['comm_instagram']?>">
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">Twitter</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="ayar_twitter" value="<?php echo $ayargetir['ayar_twitter'] ?>">
+    <label for="exampleFormControlInput1">Facebook</label>
+    <input type="text" class="form-control" name="facebook" id="facebook" value="<?=$getComm['comm_facebook']?>">
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">LinkedIn</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="ayar_linkedin" value="<?php echo $ayargetir['ayar_linkedin'] ?>">
+    <label for="exampleFormControlInput1">Sahibinden</label>
+    <input type="text" class="form-control" name="sahibinden" id="sahibinden" value="<?=$getComm['comm_sahibinden']?>">
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput1">Github</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="ayar_github" value="<?php echo $ayargetir['ayar_github'] ?>">
+    <label for="exampleFormControlInput1">İl</label>
+    <input type="text" class="form-control" name="city" id="city" value="<?=$getComm['comm_city']?>">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">İlçe</label>
+    <input type="text" class="form-control" name="distinct" id="distinct" value="<?=$getComm['comm_distinct']?>">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Adres</label>
+    <input type="text" class="form-control" name="adress"  id="adress" value="<?=$getComm['comm_adress']?>">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Google Map</label>
+    <input type="text" class="form-control" name="googleMap" id="googleMap" value="<?=$getComm['comm_googlemap']?>">
   </div>
 
  
 
 
 
-  <button type="submit" class="btn btn-primary" align="right" name="iletisimayarguncelle">Güncelle</button>
+  <button type="button" class="btn btn-primary" align="right" onclick="setCommunication($('#communicationForm'));">Güncelle</button>
 
 
 </form>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
