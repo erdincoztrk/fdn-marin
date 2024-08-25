@@ -38,5 +38,10 @@ class dbConnection{
 			return false;
 		}
 	}
+
+    public function lastInsertId(){
+        return $this->db->lastInsertId();
+    }
+
 }
 ?>
