@@ -26,6 +26,19 @@ function ChangeTextArea(){
     $('#bridge').val($('div[role=textbox]').html())
 }
 
+function addPhoto(){
+    let count = $('#photos div[class*=col-md-4]').length + 1;
+    let photoField = '  <div class="form-group col-md-4">\n' +
+        '                    <label for="path'+count+'">Fotoğraf-'+count+'</label>\n' +
+        '                    <input type="file" id="path'+count+'" class="form-control-file">\n' +
+        '                    <label for="description'+count+'">Alt  Yazı</label>\n' +
+        '                    <input type="text" id="description'+count+'" class="form-control" />\n' +
+        '                </div>'
+    let currentPhotoCount = $('#photos').html();
+    currentPhotoCount += photoField;
+    $('#photos').html(currentPhotoCount);
+}
+
 function setCommunication(form) {
     const file = 'db-transactions/communication-transactions.php';
     showLoader();
