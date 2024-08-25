@@ -41,7 +41,7 @@ if (isset($_FILES['images'])) {
 
             // Dosyayı belirtilen yükleme dizinine taşı
             if (move_uploaded_file($tmpName, $uploadFile)) {
-                $photoPaths[] = $uploadFile; // Yüklenen dosya yolunu kaydet
+                $photoPaths[] = 'images/'.$newFilename; // Yüklenen dosya yolunu kaydet
             } else {
                 echo "Failed to upload file: " . $filename;
             }
@@ -53,7 +53,6 @@ if (isset($_FILES['images'])) {
 
 // Yüklenen dosya yollarını JSON olarak saklayabiliriz
 $uploadedFilesJson = $photoPaths;
-var_dump($uploadedFilesJson);
 
 $addQuery = $db->query("INSERT INTO tbproduct(product_name, product_model, product_type, product_productionModule, product_designCategory, product_size, product_width,product_externalHeight, product_interiorHeight, product_weight, product_recommendedEngine, product_detail) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", $productArray);
 $productid = $db->lastInsertId();

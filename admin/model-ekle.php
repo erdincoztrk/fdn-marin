@@ -3,7 +3,7 @@
 
 ?>
 <div class="container">
-    <a href="solutions.php"><i class="fas fa-fw fa-arrow-left"></i></a>
+    <a href="model-listele.php"><i class="fas fa-fw fa-arrow-left"></i></a>
     <h4>Model Ekleme</h4>
     <form action="islemler/islem.php" id="addModelForm" enctype="multipart/form-data">
         <div class="row">
