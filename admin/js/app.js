@@ -22,21 +22,22 @@ function dataMessage(data) {
     data == 'successful' ? smallNotice('İşlem Başarılı!', 'success') : smallNotice('İşlem Başarısız', 'error')
 }
 
-function ChangeTextArea(){
+function ChangeTextArea() {
     $('#bridge').val($('div[role=textbox]').html())
 }
 
-function addPhoto(){
+function addPhoto() {
     let count = $('#photos div[class*=col-md-4]').length + 1;
     let photoField = '  <div class="form-group col-md-4">\n' +
-        '                    <label for="path'+count+'">Fotoğraf-'+count+'</label>\n' +
-        '                    <input type="file" id="path'+count+'" class="form-control-file">\n' +
-        '                    <label for="description'+count+'">Alt  Yazı</label>\n' +
-        '                    <input type="text" id="description'+count+'" class="form-control" />\n' +
+        '                    <label for="path' + count + '">Fotoğraf-' + count + '</label>\n' +
+        '                    <input type="file" id="path' + count + '" name="path' + count + '" class="form-control-file">\n' +
+        '                    <label for="description' + count + '">Alt  Yazı</label>\n' +
+        '                    <input type="text" id="description' + count + '" name="description' + count + '" class="form-control" />\n' +
         '                </div>'
     let currentPhotoCount = $('#photos').html();
     currentPhotoCount += photoField;
     $('#photos').html(currentPhotoCount);
+    $('#photoLength').val(count)
 }
 
 function setCommunication(form) {
@@ -65,7 +66,7 @@ function setAboutUs(form) {
     })
 }
 
-function setSiteSettings(form){
+function setSiteSettings(form) {
     const file = 'db-transactions/settings-transactions.php';
     showLoader();
     $.ajax({
@@ -78,14 +79,22 @@ function setSiteSettings(form){
     })
 }
 
-function setAddModel(form){
+function setAddModel(form) {
+    form = form instanceof jQuery ? form[0] : form;
     const file = 'db-transactions/addmodel-transactions.php';
+    let formData = new FormData(form);
+    showLoader()
     $.ajax({
         url: file,
-        type:'POST',
-        data: $(form).serialize(),
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        data: formData,
         success: (data) => {
             dataMessage(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error:', textStatus, errorThrown);
         }
     })
 }

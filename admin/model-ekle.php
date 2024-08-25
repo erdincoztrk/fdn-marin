@@ -5,7 +5,7 @@
 <div class="container">
     <a href="solutions.php"><i class="fas fa-fw fa-arrow-left"></i></a>
     <h4>Model Ekleme</h4>
-    <form action="islemler/islem.php" id="addModelForm">
+    <form action="islemler/islem.php" id="addModelForm" enctype="multipart/form-data">
         <div class="row">
 
             <div class="form-group col-md-6">
@@ -66,14 +66,25 @@
             <div class="form-group col-md-12">
                 <label for="exampleFormControlInput1">Detay</label><br>
                 <textarea cols="40" rows="4" id="editor" name="textarea" onchange="alert('deneme')"></textarea>
+                <textarea style="display:none;" id="bridge" name="detail"></textarea>
             </div>
 
-            <textarea type="hidden" id="bridge" name="detail"></textarea>
+            <div id="photos" class="row">
+                <div class="form-group col-md-12">
+                    <label for="path1">Fotoğraflar</label>
+                    <input type="file" id="path1" name="images[]" class="form-control-file" multiple>
+                    <label for="description1">Alt  Yazı</label>
+                    <input hidden type="text" id="description1" name="description1" class="form-control" />
+                </div>
+            </div>
+
+            <input type="hidden" name="photoLength" id="photoLength" />
 
         </div>
 
 
-        <button type="button" class="btn btn-primary" align="right" onclick="ChangeTextArea();setAddModel($('#addModelForm'))">Ekle</button>
+        <button type="button" class="btn btn-primary" style="margin-bottom:.5rem;" onclick="ChangeTextArea();setAddModel($('#addModelForm'))">Ekle</button>
+        <button type="button" class="btn btn-success" style="margin-bottom:.5rem;" onclick="addPhoto();"><i class="fa fa-plus"></i></button>
 
     </form>
 
