@@ -77,3 +77,11 @@
 .context-menu ul li:hover {
     background-color: #f0f0f0;
 }
+@font-face {
+    font-family: 'Beyonders';
+    src: url('../fonts/Beyonders.ttf') format('truetype');
+    /* Alternatif formatlar ekleyebilirsiniz */
+    /* src: url('path/to/fonts/Beyonders.woff') format('woff'); */
+    font-weight: normal;
+    font-style: normal;
+}
