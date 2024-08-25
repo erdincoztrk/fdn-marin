@@ -13,6 +13,8 @@
 
  <script src="js/app.js"></script>
 
+ <script src="vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
 
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
