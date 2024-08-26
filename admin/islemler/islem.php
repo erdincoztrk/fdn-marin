@@ -439,11 +439,11 @@ if(isset($_POST['solutionekle'])){
 			$dilsayi = $dilcekk['dil_sayi'] + 1;
 			$dilarttir = $db->prepare("UPDATE diller set dil_sayi = ? where dil_ad = ?");
 			$dilarttir->execute([$dilsayi, $solutionlanguage]);
-		header("Location:../cozum-ekle.php?islem=successfuly");
+		header("Location:../model-ekle.php?islem=successfuly");
 		exit;
 	}
 	else{
-		header("Location:../cozum-ekle.php?islem=unsuccessfuly");
+		header("Location:../model-ekle.php?islem=unsuccessfuly");
 		exit;
 	}
 }
@@ -486,11 +486,11 @@ if(isset($_POST['solutionduzenle'])){
 			$dilarttir = $db->prepare("UPDATE diller set dil_sayi = ? where dil_ad = ?");
 			$dilarttir->execute([$dilsayi, $solutionlanguage]);
 
-		header("Location:../solution-duzenle.php?islem=successfuly&solutionid=".$_POST['solution_id']);
+		header("Location:../model-duzenle.php?islem=successfuly&solutionid=".$_POST['solution_id']);
 		exit;
 	}
 	else{
-		header("Location:../solution-duzenle.php?islem=unsuccessfuly&solutionid=".$_POST['solution_id']);
+		header("Location:../model-duzenle.php?islem=unsuccessfuly&solutionid=".$_POST['solution_id']);
 		exit;
 	}
 }
@@ -514,11 +514,11 @@ if($deletesolution){
 	$dileksiltmek = $dilbul['dil_sayi'] - 1;
 	$eksiltmeguncelle = $db->prepare("UPDATE diller set dil_sayi = ? where dil_ad = ?");
 	$eksiltmeguncelle->execute([$dileksiltmek, $solutionad['solution_language']]);
-	header("Location:../solutions.php?islem=successfuly");
+	header("Location:../model-listele.php?islem=successfuly");
 		exit;
 }
 else{
-	header("Location:../solutions.php?islem=unsuccessfuly");
+	header("Location:../model-listele.php?islem=unsuccessfuly");
 		exit;
 }
 
