@@ -1,5 +1,6 @@
 <?php
 include '../islemler/baglan.php';
+include '../islemler/fonksiyon.php';
 $db = new dbConnection();
 $name = $_POST['name'];
 $model = $_POST['model'];
@@ -13,7 +14,7 @@ $interiorHeight = $_POST['externalHeight'];
 $weight = $_POST['weight'];
 $recommendedEngine = $_POST['recommendedEngine'];
 $detail = $_POST['detail'];
-
+$url = seo($name.$model);
 $productArray = [
     $name,
     $model,
@@ -26,7 +27,8 @@ $productArray = [
     $interiorHeight,
     $weight,
     $recommendedEngine,
-    $detail
+    $detail,
+    $url
 ];
 
 $uploadDir = '../../images/';
@@ -54,7 +56,7 @@ if (isset($_FILES['images'])) {
 // Yüklenen dosya yollarını JSON olarak saklayabiliriz
 $uploadedFilesJson = $photoPaths;
 
-$addQuery = $db->query("INSERT INTO tbproduct(product_name, product_model, product_type, product_productionModule, product_designCategory, product_size, product_width,product_externalHeight, product_interiorHeight, product_weight, product_recommendedEngine, product_detail) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", $productArray);
+$addQuery = $db->query("INSERT INTO tbproduct(product_name, product_model, product_type, product_productionModule, product_designCategory, product_size, product_width,product_externalHeight, product_interiorHeight, product_weight, product_recommendedEngine, product_detail, product_url) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)", $productArray);
 $productid = $db->lastInsertId();
 if ($addQuery) {
     foreach ($photoPaths as $item) {
