@@ -43,7 +43,7 @@ $getModels = $db->getRows("SELECT * FROM tbproduct");
                   <td><?php echo $item['product_name'] ?></td>
                   <td><?php echo $item['product_model'] ?></td>
                    <td><?php echo $item['product_type'] ?></td>
-                  <td><a href="solution-duzenle.php?solutionid=<?php echo $item['product_id']; ?>"><button class="btn btn-primary">Düzenle</button></a></td>
+                  <td><a href="model-duzenle.php?id=<?php echo $item['product_id']; ?>"><button class="btn btn-primary">Düzenle</button></a></td>
                   <td><button type="button" onclick="setDeleteModel(<?=$item['product_id']?>)" class="btn btn-danger">Sil</button></td>
              
                  <?php } ?>
