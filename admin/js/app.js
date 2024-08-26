@@ -156,3 +156,23 @@ function setPhotoDescription(id){
         }
     });
 }
+
+function setEditModel(form){
+    form = form instanceof jQuery ? form[0] : form;
+    const file = 'db-transactions/editmodel-transactions.php';
+    let formData = new FormData(form);
+    showLoader()
+    $.ajax({
+        url: file,
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: (data) => {
+            dataMessage(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error('Error:', textStatus, errorThrown);
+        }
+    })
+}

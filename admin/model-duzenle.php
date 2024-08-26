@@ -1,11 +1,12 @@
 <?php include 'header.php';
 $getModel = $db->getRow("SELECT * FROM tbproduct WHERE product_id = {$_GET['id']}");
-var_dump($getModel);
+
 ?>
 <div class="container">
     <a href="model-listele.php"><i class="fas fa-fw fa-arrow-left"></i></a>
     <h4>Model Ekleme</h4>
-    <form action="islemler/islem.php" id="addModelForm" enctype="multipart/form-data">
+    <form action="islemler/islem.php" id="editModelForm" enctype="multipart/form-data">
+        <input type="hidden" name="id"  value="<?=$getModel['product_id']?>"/>
         <div class="row">
 
             <div class="form-group col-md-6">
@@ -94,8 +95,9 @@ var_dump($getModel);
                        <tr>
                            <th><?=$counter?></th>
                            <th><img src="../<?=$photos['image_path']?>" style="width:300px; height:200px;" /></th>
-                           <th><input type="text" class="form-control" name="description" /></th>
+                           <th><input type="text" class="form-control" name="description_<?=$photos['image_id']?>" id="description_<?=$photos['image_id']?>" value="<?=$photos['image_description']?>" /></th>
                            <th>
+                               <button type="button" class="btn btn-success" onclick="setPhotoDescription(<?=$photos['image_id']?>)">Kaydet</button>
                                <button type="button" class="btn btn-danger" onclick="setDeleteModelPhoto(<?=$photos['image_id']?>, <?=$getModel['product_id']?>);">Sil</button>
                            </th>
                        </tr>
@@ -109,7 +111,7 @@ var_dump($getModel);
         </div>
 
 
-        <button type="button" class="btn btn-primary" style="margin-bottom:.5rem;" onclick="ChangeTextArea();setAddModel($('#addModelForm'))">Güncelle</button>
+        <button type="button" class="btn btn-primary" style="margin-bottom:.5rem;" onclick="ChangeTextArea();setEditModel($('#editModelForm'))">Güncelle</button>
 
     </form>
 

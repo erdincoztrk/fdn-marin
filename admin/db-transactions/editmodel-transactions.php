@@ -1,0 +1,72 @@
+<?php
+include '../islemler/baglan.php';
+include '../islemler/fonksiyon.php';
+$db = new dbConnection();
+$id = $_POST['id'];
+$name = $_POST['name'];
+$model = $_POST['model'];
+$type = $_POST['type'];
+$productionModule = $_POST['productionModule'];
+$designCategory = $_POST['designCategory'];
+$size = $_POST['size'];
+$width = $_POST['width'];
+$externalHeight = $_POST['externalHeight'];
+$interiorHeight = $_POST['externalHeight'];
+$weight = $_POST['weight'];
+$recommendedEngine = $_POST['recommendedEngine'];
+$detail = $_POST['detail'];
+$url = seo($name.$model);
+$productArray = [
+    $name,
+    $model,
+    $type,
+    $productionModule,
+    $designCategory,
+    $size,
+    $width,
+    $externalHeight,
+    $interiorHeight,
+    $weight,
+    $recommendedEngine,
+    $detail,
+    $url,
+    $id
+];
+
+$uploadDir = '../../images/';
+$photoPaths = [];
+
+if (isset($_FILES['images'])) {
+    foreach ($_FILES['images']['name'] as $key => $filename) {
+        if ($_FILES['images']['error'][$key] === UPLOAD_ERR_OK) {
+            $tmpName = $_FILES['images']['tmp_name'][$key];
+            $newFilename = basename($filename);
+            $uploadFile = $uploadDir . $newFilename;
+
+            // Dosyayı belirtilen yükleme dizinine taşı
+            if (move_uploaded_file($tmpName, $uploadFile)) {
+                $photoPaths[] = 'images/'.$newFilename; // Yüklenen dosya yolunu kaydet
+            } else {
+                echo "Failed to upload file: " . $filename;
+            }
+        } else {
+          //  echo "Error occurred with file: " . $filename;
+        }
+    }
+}
+
+// Yüklenen dosya yollarını JSON olarak saklayabiliriz
+$uploadedFilesJson = $photoPaths;
+
+
+$addQuery = $db->query("UPDATE tbproduct SET product_name = ?, product_model = ?, product_type = ?, product_productionModule = ?, product_designCategory = ?, product_size = ?, product_width = ?, product_externalHeight = ?, product_interiorHeight = ?, product_weight = ?, product_recommendedEngine = ?, product_detail = ?, product_url = ? WHERE product_id = ?", $productArray);
+
+if ($addQuery) {
+    foreach ($photoPaths as $item) {
+        $imagesArray = [$item, 'product', $id];
+        $db->query("INSERT INTO tbimages(image_path, image_field, image_productid) VALUES(?,?,?)", $imagesArray);
+    }
+}
+
+
+echo $addQuery ? 'successful' : 'unsuccessful';
