@@ -3,7 +3,7 @@ include('../islemler/baglan.php');
 $db = new dbConnection();
 $id = $_GET['id'];
 
-if($_GET['field']){
+if(isset($_GET['field'])){
     $deleteQuery = $db->query("DELETE FROM tbimages WHERE image_id = $id");
     echo $deleteQuery ? 'successful' : 'unsuccessful';
     return;
