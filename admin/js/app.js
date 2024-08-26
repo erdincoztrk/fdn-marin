@@ -118,8 +118,9 @@ function setDeleteModel(id) {
             })
         }
     })
+}
 
-}function setDeleteModelPhoto(photoId, productId) {
+function setDeleteModelPhoto(photoId, productId) {
     const file = 'db-transactions/deletemodel-transactions.php?id=' + photoId + '&field=photo';
     showLoader();
     $.ajax({
@@ -138,4 +139,20 @@ function setDeleteModel(id) {
             })
         }
     })
+}
+
+function setPhotoDescription(id){
+    const inputVal = $('#description_'+id).val();
+    const file = 'db-transactions/editphotodescription-transactions.php?id='+id;
+    showLoader();
+    $.ajax({
+        url: file,
+        type: 'POST',
+        data:{
+            'description': inputVal
+        },
+        success: (data)=>{
+            dataMessage(data);
+        }
+    });
 }
