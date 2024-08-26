@@ -2,6 +2,7 @@
 include '../islemler/baglan.php';
 include '../islemler/fonksiyon.php';
 $db = new dbConnection();
+$id = $_POST['id'];
 $name = $_POST['name'];
 $model = $_POST['model'];
 $type = $_POST['type'];
@@ -28,7 +29,8 @@ $productArray = [
     $weight,
     $recommendedEngine,
     $detail,
-    $url
+    $url,
+    $id
 ];
 
 $uploadDir = '../../images/';
@@ -48,7 +50,7 @@ if (isset($_FILES['images'])) {
                 echo "Failed to upload file: " . $filename;
             }
         } else {
-            echo "Error occurred with file: " . $filename;
+          //  echo "Error occurred with file: " . $filename;
         }
     }
 }
@@ -56,11 +58,12 @@ if (isset($_FILES['images'])) {
 // Yüklenen dosya yollarını JSON olarak saklayabiliriz
 $uploadedFilesJson = $photoPaths;
 
-$addQuery = $db->query("INSERT INTO tbproduct(product_name, product_model, product_type, product_productionModule, product_designCategory, product_size, product_width,product_externalHeight, product_interiorHeight, product_weight, product_recommendedEngine, product_detail, product_url) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)", $productArray);
-$productid = $db->lastInsertId();
+
+$addQuery = $db->query("UPDATE tbproduct SET product_name = ?, product_model = ?, product_type = ?, product_productionModule = ?, product_designCategory = ?, product_size = ?, product_width = ?, product_externalHeight = ?, product_interiorHeight = ?, product_weight = ?, product_recommendedEngine = ?, product_detail = ?, product_url = ? WHERE product_id = ?", $productArray);
+
 if ($addQuery) {
     foreach ($photoPaths as $item) {
-        $imagesArray = [$item, 'product', $productid];
+        $imagesArray = [$item, 'product', $id];
         $db->query("INSERT INTO tbimages(image_path, image_field, image_productid) VALUES(?,?,?)", $imagesArray);
     }
 }

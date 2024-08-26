@@ -93,7 +93,85 @@ function setAddModel(form) {
         success: (data) => {
             dataMessage(data);
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error('Error:', textStatus, errorThrown);
+        }
+    })
+}
+
+function setDeleteModel(id) {
+    const file = 'db-transactions/deletemodel-transactions.php?id=' + id;
+    showLoader();
+    $.ajax({
+        url: file,
+        type: 'GET',
+        success: (data) => {
+            dataMessage();
+            $.ajax({
+                url: 'model-listele.php',
+                type: 'GET',
+                success: (response) => {
+                    const $responseHtml = $(response);
+                    const $containerElements = $responseHtml.find('.container').html();
+                    $('.container').html($containerElements);
+                }
+            })
+        }
+    })
+}
+
+function setDeleteModelPhoto(photoId, productId) {
+    const file = 'db-transactions/deletemodel-transactions.php?id=' + photoId + '&field=photo';
+    showLoader();
+    $.ajax({
+        url: file,
+        type: 'GET',
+        success: (data) => {
+            dataMessage();
+            $.ajax({
+                url: 'model-duzenle.php?id='+productId,
+                type: 'GET',
+                success: (response) => {
+                    const $responseHtml = $(response);
+                    const $containerElements = $responseHtml.find('.container').html();
+                    $('.container').html($containerElements);
+                }
+            })
+        }
+    })
+}
+
+function setPhotoDescription(id){
+    const inputVal = $('#description_'+id).val();
+    const file = 'db-transactions/editphotodescription-transactions.php?id='+id;
+    showLoader();
+    $.ajax({
+        url: file,
+        type: 'POST',
+        data:{
+            'description': inputVal
+        },
+        success: (data)=>{
+            dataMessage(data);
+        }
+    });
+}
+
+function setEditModel(form){
+    form = form instanceof jQuery ? form[0] : form;
+    const file = 'db-transactions/editmodel-transactions.php';
+    let formData = new FormData(form);
+    showLoader()
+    $.ajax({
+        url: file,
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: (data) => {
+            dataMessage(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
             console.error('Error:', textStatus, errorThrown);
         }
     })
