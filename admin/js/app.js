@@ -118,4 +118,24 @@ function setDeleteModel(id) {
             })
         }
     })
+
+}function setDeleteModelPhoto(photoId, productId) {
+    const file = 'db-transactions/deletemodel-transactions.php?id=' + photoId + '&field=photo';
+    showLoader();
+    $.ajax({
+        url: file,
+        type: 'GET',
+        success: (data) => {
+            dataMessage();
+            $.ajax({
+                url: 'model-duzenle.php?id='+productId,
+                type: 'GET',
+                success: (response) => {
+                    const $responseHtml = $(response);
+                    const $containerElements = $responseHtml.find('.container').html();
+                    $('.container').html($containerElements);
+                }
+            })
+        }
+    })
 }
