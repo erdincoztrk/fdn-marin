@@ -67,14 +67,14 @@ $db = new dbConnection();
                 Modeller
             </div>
              <li class="nav-item">
-                <a class="nav-link" href="solutions.php">
+                <a class="nav-link" href="model-listele.php">
                     <i class="fa fa-ship"></i>
-                    <span>Model Ekle</span></a>
+                    <span>Model Listele</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="model-ekle.php">
                     <i class="fa fa-ship"></i>
-                    <span>Model Listele</span></a>
+                    <span>Model Ekle</span></a>
             </li>
 
 
