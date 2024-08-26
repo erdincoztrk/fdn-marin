@@ -4,7 +4,7 @@ $getModels = $db->getRows("SELECT * FROM tbproduct");
 
  ?>
 <div class="container">
-	<h4><a href="model-ekle.php"><button class="btn btn-success">+</button></a>   ÇÖZÜMLER
+	<h4><a href="model-ekle.php"><button class="btn btn-success">+</button></a>   Modeller
   <small>
 <span>
        <?php if(isset($_GET['islem'])){
