@@ -93,8 +93,29 @@ function setAddModel(form) {
         success: (data) => {
             dataMessage(data);
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
             console.error('Error:', textStatus, errorThrown);
+        }
+    })
+}
+
+function setDeleteModel(id) {
+    const file = 'db-transactions/deletemodel-transactions.php?id=' + id;
+    showLoader();
+    $.ajax({
+        url: file,
+        type: 'GET',
+        success: (data) => {
+            dataMessage();
+            $.ajax({
+                url: 'model-listele.php',
+                type: 'GET',
+                success: (response) => {
+                    const $responseHtml = $(response);
+                    const $containerElements = $responseHtml.find('.container').html();
+                    $('.container').html($containerElements);
+                }
+            })
         }
     })
 }
