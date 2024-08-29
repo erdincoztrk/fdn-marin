@@ -14,7 +14,7 @@ $interiorHeight = $_POST['externalHeight'];
 $weight = $_POST['weight'];
 $recommendedEngine = $_POST['recommendedEngine'];
 $detail = $_POST['detail'];
-$url = seo($name.$model);
+$url = seo($name).'-'.seo($model);
 $productArray = [
     $name,
     $model,
