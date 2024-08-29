@@ -24,9 +24,9 @@ include('head.php');
                     <div class="row" style="d-none">
                         <div class="col-md-7" style="d-none">
                             <div id="logoDetail" class="detail-box">
-                                <div id="logo">  </div>
+                                <div id="logo"></div>
                                 <h1 style="font-family: 'Beyonders', sans-serif; display:none;">
-                                <label> FDN </label> <br>
+                                    <label> FDN </label> <br>
                                     <span style="margin-top:1rem;">
                         Marine
                       </span>
@@ -34,11 +34,7 @@ include('head.php');
                                 <p>
                                     <!--Denizde özgürlüğün adı...-->
                                 </p>
-                                <div class="btn-box d-none">
-                                    <a href="" class="btn-1">Confident 490</a>
-                                    <a href="https://fdnmarine.sahibinden.com" target="_blank"
-                                       class="btn-2">Confident Esteem</a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -47,10 +43,10 @@ include('head.php');
 
         </div>
     </div>
-    <div class="container idicator_container d-none">
+    <div class="container idicator_container ">
         <ol class="carousel-indicators">
 
-            <a href="https://www.instagram.com/fdnmarine/" target="_blank"
+            <a href="https://www.instagram.com/<?= $communication['comm_instagram'] ?>/" target="_blank"
                style="color:inherit; text-decoration: none; margin-right:2%">
                 <i class="fa-brands fa-instagram fa-3x" style="
             margin-right:2%;
@@ -59,7 +55,7 @@ include('head.php');
 "></i>
             </a>
 
-            <a href="https://api.whatsapp.com/send?phone=905367134089" target="_blank"
+            <a href="https://api.whatsapp.com/send?phone=90<?= $communication['comm_tel'] ?>" target="_blank"
                style="color:inherit; text-decoration: none; margin-right:2%;">
                 <i class="fa-brands fa-whatsapp fa-3x" style="
             margin-right:2%;
@@ -68,22 +64,18 @@ include('head.php');
 "></i>
             </a>
 
-            <a href="https://www.facebook.com/people/Fdn-Marine/pfbid021hoSKzMQbbbZ7JBuxYTB6qJGWvNYBS7bwmWqAzgFfHVoZA2fE5p3mnarDGfZWVEAl/"
+            <a href="<?= $communication['comm_facebook'] ?>"
                target="_blank" style="color:inherit; text-decoration: none; margin-right:2%">
                 <i class="fa-brands fa-facebook fa-3x" style=" transition: background-color 0.3s ease, color 0.3s ease; margin-right:2%;
 }"></i>
             </a>
 
-            <a href="https://fdnmarine.sahibinden.com/" target="_blank"
+            <a href="https://<?= $communication['comm_sahibinden'] ?>.sahibinden.com/" target="_blank"
                style="color:inherit; text-decoration: none; margin-right:2%;">
                 <i class="fa-solid fa-s fa-3x" style=" transition: background-color 0.3s ease, color 0.3s ease; margin-right:2%;
 }"></i>
             </a>
 
-
-            <!--  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
         </ol>
     </div>
     </div>
@@ -103,7 +95,7 @@ include('head.php');
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 px-0" >
+            <div class="col-md-6 px-0">
                 <div class="detail-box">
                     <div class="heading_container ">
                         <h2>
@@ -111,11 +103,7 @@ include('head.php');
                         </h2>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                        in reprehenderit in voluptate velit
+                        <?= $aboutus['about_us'] ?>
                     </p>
                 </div>
             </div>
@@ -128,57 +116,8 @@ include('head.php');
 
 <!-- ÖZEL ÜRÜNLER SECTİON -->
 
-<section class="team_section layout_padding d-none">
-    <div class="container">
-        <div class="heading_container heading_center">
-            <h2>
-                Özel Ürünlerimiz
-            </h2>
-        </div>
-        <div class="row">
 
-                <div class="col-md-6 col-sm-6 mx-auto ">
-                    <a href="model-detay.php">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="images/magnum-first.jpeg" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h5>
-                                Magnum
-                            </h5>
-                            <h6 class="">
-                                Detayları Görmek İçin Tıkla
-                            </h6>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-
-            <div class="col-md-6 col-sm-6 mx-auto ">
-                <a href="model-detay.php">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/magnum-first.jpeg" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <h5>
-                            Confident
-                        </h5>
-                        <h6 class="">
-                            Detayları Görmek İçin Tıkla
-                        </h6>
-                    </div>
-                </div>
-                </a>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- end team section -->
-
+<?php $getProduct = $db->getRows("SELECT * FROM tbproduct") ?>
 <!-- ÜRÜNLER SECTION -->
 <section class="team_section layout_padding">
     <div class="container">
@@ -188,36 +127,27 @@ include('head.php');
             </h2>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 mx-auto ">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/magnum-first.jpeg" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <h5>
-                            Magnum
-                        </h5>
-                        <h6 class="">
-                            Detayları Görmek İçin Tıkla
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 mx-auto ">
-                <div class="box">
-                    <div class="img-box">
-                        <img src="images/magnum-first.jpeg" alt="">
-                    </div>
-                    <div class="detail-box">
-                        <h5>
-                            Confident
-                        </h5>
-                        <h6 class="">
-                            Detayları Görmek İçin Tıkla
-                        </h6>
+            <?php foreach ($getProduct as $item){
+            $getPhoto = $db->getRow("SELECT * FROM tbimages WHERE image_id = {$item['product_id']}")
+            ?>
+            <a href="model-detay.php?model=<?=$item['product_url']?>&mid=<?=$item['product_id']?>">
+                <div class="col-md-6 col-sm-6 mx-auto ">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="<?= $getPhoto['image_path'] ?>" alt="<?=$getPhoto['image_description']?>">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                <?= $item['product_name']; ?>
+                            </h5>
+                            <h6 class="">
+                                Detayları Görmek İçin Tıkla
+                            </h6>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
+                <?php } ?>
         </div>
         <div class="btn-box">
             <a href="modeller.php">
@@ -227,167 +157,6 @@ include('head.php');
     </div>
 </section>
 
-<!-- service section -->
-
-<section class="service_section layout_padding d-none">
-    <div class="container">
-        <div class="heading_container heading_center">
-            <h2>
-                Diğer Servislerimiz
-            </h2>
-        </div>
-        <div class="row" style=" justify-content: center;">
-            <div class="col-md-4">
-                <div class="box ">
-                    <div class="img-box">
-                        <img src="images/crane-transport-svgrepo-com.svg" style="width: 80px; height:auto;">
-                    </div>
-                    <div class="detail-box">
-                        <h6>
-                            FDN Oto ve Tekne Taşıyıcılığı
-                        </h6>
-                        <p>
-                            Minima consequatur architecto eaque assumenda ipsam itaque quia eum in doloribus debitis
-                            impedit ut minus tenetur corrupti excepturi ullam.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- end service section -->
-
-
-<!-- client section -->
-
-<section class="client_section layout_padding d-none">
-    <div class="container ">
-        <div class="heading_container heading_center">
-            <h2>
-                What is says our clients
-            </h2>
-        </div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="images/client.png" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h4>
-                                Minim Veniam
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item ">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="images/client.png" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h4>
-                                Minim Veniam
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item ">
-                    <div class="box">
-                        <div class="img-box">
-                            <img src="images/client.png" alt="">
-                        </div>
-                        <div class="detail-box">
-                            <h4>
-                                Minim Veniam
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel_btn-box">
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- end client section -->
-
-<!-- contact section -->
-
-<section class="contact_section layout_padding d-none">
-    <div class="contact_bg_box">
-        <div class="img-box">
-            <img src="images/contact-bg.jpg" alt="">
-        </div>
-    </div>
-    <div class="container">
-        <div class="heading_container heading_center">
-            <h2>
-                Get In touch
-            </h2>
-        </div>
-        <div class="">
-            <div class="row">
-                <div class="col-md-7 mx-auto">
-                    <form action="#">
-                        <div class="contact_form-container">
-                            <div>
-                                <div>
-                                    <input type="text" placeholder="Full Name"/>
-                                </div>
-                                <div>
-                                    <input type="email" placeholder="Email "/>
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="Phone Number"/>
-                                </div>
-                                <div class="">
-                                    <input type="text" placeholder="Message" class="message_input"/>
-                                </div>
-                                <div class="btn-box ">
-                                    <button type="submit">
-                                        Send
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <?php include('footer.php') ?>
 <script>
