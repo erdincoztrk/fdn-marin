@@ -176,3 +176,24 @@ function setEditModel(form){
         }
     })
 }
+
+function deleteMessage(id){
+    const file = 'db-transactions/deletemessage-transactions.php?id='+id;
+    showLoader();
+    $.ajax({
+        url:file,
+        type:'GET',
+        success:(data)=>{
+            dataMessage(data);
+            $.ajax({
+                url: 'mesajlar.php',
+                type: 'GET',
+                success: (response) => {
+                    const $responseHtml = $(response);
+                    const $containerElements = $responseHtml.find('.container').html();
+                    $('.container').html($containerElements);
+                }
+            })
+        }
+    })
+}
