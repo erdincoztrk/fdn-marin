@@ -14,7 +14,7 @@ include('header.php');
                 <div class="col-md-6 px-0">
                     <div class="img_container">
                         <div class="img-box">
-                            <iframe src="https://www.google.com/maps/d/embed?mid=13CPdu9KPjoiLeZ_ZFrSBs_NK6hzVoss&ehbc=2E312F"
+                            <iframe src="<?=$communication['comm_googlemap']?>"
                                     width="640" height="480"></iframe>
                         </div>
                     </div>
@@ -26,7 +26,7 @@ include('header.php');
                                 <thead>
                                 <tr>
                                     <th>
-                                        <a href="https://www.instagram.com/fdnmarine/" target="_blank"
+                                        <a href="https://www.instagram.com/<?= $communication['comm_instagram'] ?>/ target="_blank"
                                            style="color:inherit; background-color:inherit; border:inherit; text-decoration: none; margin-right:2%">
                                             <i class="fa-brands fa-instagram fa-3x" style="
             margin-right:2%;
@@ -36,7 +36,7 @@ include('header.php');
                                         </a>
                                     </th>
                                     <th>
-                                        <a href="https://api.whatsapp.com/send?phone=905367134089" target="_blank"
+                                        <a href="https://api.whatsapp.com/send?phone=<?=$communication['comm_tel']?>>" target="_blank"
                                            style="color:inherit; background-color:inherit; border:inherit; text-decoration: none; margin-right:2%">
                                             <i class="fa-brands fa-whatsapp fa-3x" style="
             margin-right:2%;
@@ -46,7 +46,7 @@ include('header.php');
                                         </a>
                                     </th>
                                     <th>
-                                        <a href="https://www.facebook.com/people/Fdn-Marine/pfbid021hoSKzMQbbbZ7JBuxYTB6qJGWvNYBS7bwmWqAzgFfHVoZA2fE5p3mnarDGfZWVEAl/"
+                                        <a href="<?= $communication['comm_facebook'] ?>"
                                            target="_blank"
                                            style="color:inherit; background-color:inherit; border:inherit; text-decoration: none; margin-right:2%">
                                             <i class="fa-brands fa-facebook fa-3x" style=" transition: background-color 0.3s ease, color 0.3s ease; margin-right:2%;
@@ -54,7 +54,7 @@ include('header.php');
                                         </a>
                                     </th>
                                     <th>
-                                        <a href="https://fdnmarine.sahibinden.com/" target="_blank"
+                                        <a href="https://<?=$communication['comm_sahibinden']?>.sahibinden.com/" target="_blank"
                                            style="color:inherit; background-color:inherit; border:inherit; text-decoration: none; margin-right:2%">
                                             <i class="fa-solid fa-s fa-3x" style=" transition: background-color 0.3s ease, color 0.3s ease; margin-right:2%;
 }"></i>
@@ -67,29 +67,29 @@ include('header.php');
                                 <h5>
                                     Mesaj bırakın
                                 </h5>
-                                <form action="#">
+                                <form id="message">
                                     <div class="form-row mb-05">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="Ad"
+                                            <input type="text" class="form-control" placeholder="Ad" name="name"
                                                    style="margin-top:2%;">
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" placeholder="soyad"
+                                            <input type="text" class="form-control" placeholder="soyad" name="surname"
                                                    style="margin-top:2%;">
                                         </div>
                                         <div class="col-md-6" style="margin-top:2%;">
-                                            <input type="text" class="form-control" placeholder="Mail">
+                                            <input type="text" class="form-control" placeholder="Mail" name="mail">
                                         </div>
                                         <div class="col-md-6" style="margin-top:2%;">
-                                            <input type="text" class="form-control" placeholder="Telefon">
+                                            <input type="text" class="form-control" placeholder="Telefon" name="phone">
                                         </div>
                                         <div class="col-md-12">
-                                            <textarea class="form-control" rows="5" placeholder="Mesajınız..."
+                                            <textarea class="form-control" rows="5" placeholder="Mesajınız..." name="detail"
                                                       style="margin-top:2%;"></textarea>
                                         </div>
                                     </div>
 
-                                    <a type="button"  style="margin-top:2%;">
+                                    <a type="button" onclick="sendMessage($('#message'), 'message')"  style="margin-top:2%;">
                                         Gönder
                                     </a>
                                 </form>

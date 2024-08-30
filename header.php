@@ -1,3 +1,10 @@
+<?php
+include('admin/islemler/baglan.php');
+$db = new dbConnection();
+$siteSettings = $db->getRow("SELECT * FROM tbsitesettings");
+$communication = $db->getRow("SELECT * FROM tbcommunication");
+$aboutus = $db->getRow("SELECT * FROM tbaboutus");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -8,13 +15,13 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <!-- Site Metas -->
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <meta name="keywords" content="<?=$siteSettings['setting_keyword']?>"/>
+    <meta name="description" content="<?=$siteSettings['setting_description']?>"/>
+    <meta name="author" content="Erdinç Öztürk"/>
     <link rel="shortcut icon" href="images/fdn-marine-Photoroom-beyaz.png" type="image/x-icon">
     <link rel="stylesheet" href="fontawesome-free-6.5.2-web/css/all.min.css">
 
-    <title>FDN Marine</title>
+    <title><?=$siteSettings['settind_title']?>></title>
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
