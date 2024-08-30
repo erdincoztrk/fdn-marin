@@ -1,5 +1,5 @@
 <?php include 'header.php';
-$mesaj = $db->getRows("SELECT * FROM tbmessages");
+$mesaj = $db->getRows("SELECT * FROM tbmessages ORDER BY message_date DESC");
 
 ?>
     <div class="container">
@@ -13,6 +13,7 @@ $mesaj = $db->getRows("SELECT * FROM tbmessages");
             <tr>
                 <th>Gönderen Ad Soyad</th>
                 <th>Gönderen Mail</th>
+                <th>Telefon Numarası</th>
                 <th>Mesaj</th>
                 <th>Tarih</th>
                 <th>Sil</th>
@@ -27,6 +28,7 @@ $mesaj = $db->getRows("SELECT * FROM tbmessages");
             <tr>
                 <td><?php echo $mesajgetir['message_name'] . ' ' . $mesajgetir['message_surname'] ?></td>
                 <td><?php echo $mesajgetir['message_mail'] ?></td>
+                <td><?php echo $mesajgetir['message_phone'] ?></td>
                 <td><?php echo $mesajgetir['message_detail'] ?></td>
                 <td><?php echo $mesajgetir['message_date'] ?></td>
                 <td align="center"><button onclick="deleteMessage(<?=$mesajgetir['message_id']?>)" class=" btn btn-danger"><i class="fa fa-trash"></i></button></td>
