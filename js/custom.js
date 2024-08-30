@@ -51,7 +51,7 @@ function sendMessage(form, id) {
    else if($('#' + id + ' input[name=phone]').val() == ''){
         $('#' + id + ' input[name=phone]').css('border', '3px solid red')
     }
-   else if($('#' + id + ' input[name=detail]').val() == ''){
+   else if($('#' + id + ' textarea[name=detail]').text() == ''){
         $('#' + id + ' [id=detail]').css('border', '3px solid red')
     }
    else{
