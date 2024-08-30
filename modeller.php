@@ -4,6 +4,7 @@ ob_start();
 $_SESSION['sayfa'] = 'urunler';
 include('head.php');
 include('header.php');
+$getModels = $db->getRows("SELECT * FROM tbproduct ORDER BY product_id ASC");
 ?>
 
 <!-- ÜRÜNLER SECTION -->
@@ -15,16 +16,20 @@ include('header.php');
             </h2>
         </div>
         <div class="column" style="display:ruby;">
-            <?php for($i = 1; $i<=5; $i++) {?>
+            <?php
+            foreach($getModels as $item) {
+                $getPhoto = $db->getRow("SELECT * FROM tbimages WHERE image_productid = ".$item['product_id']);
+
+                ?>
             <div class="col-md-6 col-sm-6 ">
-                <a href="model-detay.php">
+                <a href="model-detay.php?model=<?=$item['product_url']?>&mid=<?=$item['product_id']?>">
                 <div class="box" style="justify-content: center;">
                     <div class="img-box">
-                        <img src="images/magnum-first.jpeg" alt="">
+                        <img src="<?=$getPhoto['image_path']?>" alt="<?=$getPhoto['image_description']?>">
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Magnum
+                            <?=$item['product_name'] . ' ' . $item['product_model']?>
                         </h5>
                         <h6 class="">
                             Detayları Görmek İçin Tıkla
