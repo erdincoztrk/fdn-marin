@@ -157,7 +157,7 @@ function setPhotoDescription(id){
     });
 }
 
-function setEditModel(form){
+function setEditModel(form, id){
     form = form instanceof jQuery ? form[0] : form;
     const file = 'db-transactions/editmodel-transactions.php';
     let formData = new FormData(form);
@@ -170,6 +170,15 @@ function setEditModel(form){
         data: formData,
         success: (data) => {
             dataMessage(data);
+            $.ajax({
+                url: 'model-duzenle.php?id='+id,
+                type: 'GET',
+                success: (response) => {
+                    const $responseHtml = $(response);
+                    const $containerElements = $responseHtml.find('.container').html();
+                    $('.container').html($containerElements);
+                }
+            });
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.error('Error:', textStatus, errorThrown);
