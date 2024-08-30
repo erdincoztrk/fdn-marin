@@ -1,5 +1,7 @@
 <?php
-include('../islemler/islem.php');
+include('../islemler/baglan.php');
+session_start();
+ob_start();
 $db = new dbConnection();
 $mail = $_POST['admin_mail'];
 $password = $_POST['admin_password'];
@@ -10,6 +12,7 @@ if($getAdmin){
     $_SESSION['id'] = $getAdmin['admin_id'];
     echo 'successful';
 }else{
+    session_destroy();
     echo 'unsuccessful';
 }
 

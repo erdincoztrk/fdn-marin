@@ -206,8 +206,8 @@ function adminLogin(form){
         data:$(form).serialize(),
         success: (data) => {
             if(data == 'successful'){
+                smallNotice("Giriş Başarılı! Anasayfaya yönlendiriliyorsunuz.", 'success');
                 setTimeout(() => {
-                    smallNotice("Giriş Başarılı! Anasayfaya yönlendiriliyorsunuz.", 'success');
                     window.location = 'homepage.php';
                 }, 2000)
             }else{
@@ -216,4 +216,17 @@ function adminLogin(form){
 
         }
     });
+}
+
+function adminLogout(){
+    const file = 'db-transactions/adminlogout-transactions.php';
+    $.ajax({
+        url:file,
+        type:'GET',
+        success:(data) => {
+            if(data){
+                window.location = 'index.php'
+            }
+        }
+    })
 }
