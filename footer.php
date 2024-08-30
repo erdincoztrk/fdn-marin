@@ -16,22 +16,22 @@
                     <a href="" class="">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span>
-                Yalova/Kirazlı
-              </span>
+                            <?=$communication['comm_adress'] . '/' . $communication['comm_distinct'] . '/' . $communication['comm_city']?>
+                                          </span>
                     </a>
-                    <a href="" class="">
+                    <a href="tel:<?=$communication['comm_tel']?>" class="">
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <span>
                 Telefon : +90 536 713 40 89
               </span>
                     </a>
-                    <a href="" class="">
+                    <a href="mailto:<?=$communication['comm_mail']?>" class="" >
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                         <span>
-                demo@gmail.com
+                <?=$communication['comm_mail']?>
               </span>
                     </a>
-                    <div class="social_box">
+                    <div class="social_box d-none">
                         <a href="">
                             <i class="fa fa-facebook" aria-hidden="true"></i>
                         </a>
@@ -52,26 +52,27 @@
                     <h5>
                         Mesaj bırakın
                     </h5>
-                    <form action="#">
+                    <form id="message">
                         <div class="form-row mb-05">
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Ad">
+                                <input type="text" class="form-control" name="name" placeholder="Ad">
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="soyad" style="margin-top:2%;">
+                                <input type="text" class="form-control" name="surname" placeholder="soyad" style="margin-top:2%;">
                             </div>
                             <div class="col-md-6" style="margin-top:2%;">
-                                <input type="text" class="form-control" placeholder="Mail">
+                                <input type="text" class="form-control" name="mail" placeholder="Mail">
                             </div>
                             <div class="col-md-6" style="margin-top:2%;">
-                                <input type="text" class="form-control" placeholder="Telefon">
+                                <input type="text" class="form-control" name="phone" placeholder="Telefon">
                             </div>
                             <div class="col-md-12">
-                                <textarea class="form-control" rows="5" placeholder="Mesajınız..." style="margin-top:2%;"></textarea>
+                                <textarea class="form-control" rows="5" name="detail" id="detail" placeholder="Mesajınız..."
+                                          style="margin-top:2%;"></textarea>
                             </div>
                         </div>
 
-                        <button>
+                        <button type="button" onclick="sendMessage($('#message'), 'message')">
                             Gönder
                         </button>
                     </form>
@@ -92,7 +93,7 @@
     </p>
 </footer>
 <!-- footer section -->
-
+<script src="admin/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="fontawesome-free-6.5.2-web/js/all.min.js"></script>
 <script src="js/bootstrap.js"></script>
