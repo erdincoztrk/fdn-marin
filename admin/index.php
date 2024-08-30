@@ -14,8 +14,9 @@
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+    <link href="app.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -24,86 +25,66 @@
 
 <body class="bg-gradient-primary">
 
-    <div class="container">
+<!-- Just an image -->
 
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
+<div class="container">
+    <div class="text-center">
+        <img src="../images/fdn-marine-Photoroom-beyaz.png" /> <br>
+        <b style="font-family: 'Beyonders', sans-serif; font-style:italic; color:white">ADMIN</b>
+    </div>
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Hoşgeldin!</h1>
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <form class="user" id="admin">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user"
+                                               id="exampleInputEmail" aria-describedby="emailHelp"
+                                               placeholder="Enter Email Address..." name="admin_mail">
                                     </div>
-                                    <form class="user" action="islemler/islem.php" method="POST">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address..." name="admin_mail">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password" name="admin_password">
-                                        </div>                                       
-                                        <button type="submit" class="btn btn-primary btn-user btn-block" name=admin_login>
-                                            Login
-                                        </button>
-                                        
-                                        
-                                       
-                                    </form>
-                                    <hr> 
-                                    <!-- PANELE İZİSİZ GİRİŞ -->
-                                    <div class="text-center">
-                                  <?php if(isset($_GET['izinsizgiris'])){ ?>
-                                  <label class="alert alert-danger "><b>PANELE İZİNSİZ GİRİŞ YAPILAMAZ!</b></label>   
-                                  <?php }
-                                  // KULLANICI ADI VEYA ŞİFRE YANLIŞ
-                                  if(isset($_GET['girisbasarisiz'])){ ?> 
-                                    <label class="alert alert-danger "><b>KULLANICI ADI VEYA ŞİFRE YANLIŞ!</b>  </label>  
-                                  <?php  } 
-                                  // ÇIKIŞ İŞLEMİ
-                                  if(isset($_GET['logout'])){ ?>
-                                    <label class="alert alert-success "><b>ÇIKIŞ BAŞARILI!</b>  </label>
-                                  
-                                  <?php } ?>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user"
+                                               id="exampleInputPassword" placeholder="Password" name="admin_password">
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-user btn-block" onclick="adminLogin($('#admin'))" name=login>
+                                        Login
+                                    </button>
 
-                                 
-                                     
+                                </form>
 
 
 
-                                   </div>  
-
-
-
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</div>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+</div>
+<script src="vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="js/app.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

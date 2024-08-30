@@ -193,7 +193,27 @@ function deleteMessage(id){
                     const $containerElements = $responseHtml.find('.container').html();
                     $('.container').html($containerElements);
                 }
-            })
+            });
         }
-    })
+    });
+}
+
+function adminLogin(form){
+    const file = 'db-transactions/adminlogin-transactions.php';
+    $.ajax({
+        url:file,
+        type:'POST',
+        data:$(form).serialize(),
+        success: (data) => {
+            if(data == 'successful'){
+                setTimeout(() => {
+                    smallNotice("Giriş Başarılı! Anasayfaya yönlendiriliyorsunuz.", 'success');
+                    window.location = 'homepage.php';
+                }, 2000)
+            }else{
+                smallNotice('Giriş Başarısız! Kullanıcı adı veya şifre yanlış.', 'error');
+            }
+
+        }
+    });
 }
