@@ -31,8 +31,8 @@ $xml = '
     </url>
 ';
 $getmodels = $db->getRows("SELECT * FROM tbproduct");
-$url = 'https://www.fdnmarine.com/model-detay.php?';
 foreach ($getmodels as $product) {
+    $url = 'https://www.fdnmarine.com/model-detay.php?';
     $url .= 'model=' . $product['product_url'] . '&amp;mid?=' . $product['product_id'];
     $xml .= '
         <url>
