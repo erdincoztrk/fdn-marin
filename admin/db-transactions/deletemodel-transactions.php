@@ -4,7 +4,11 @@ $db = new dbConnection();
 $id = $_GET['id'];
 
 if(isset($_GET['field'])){
+    $deletePhotos = $db->getRows("SELECT * FROM tbimages WHERE image_id = $id");
     $deleteQuery = $db->query("DELETE FROM tbimages WHERE image_id = $id");
+    foreach($deletePhotos as $delete){
+        unlink('../../'.$delete['image_path']);
+    }
     echo $deleteQuery ? 'successful' : 'unsuccessful';
     return;
 }
