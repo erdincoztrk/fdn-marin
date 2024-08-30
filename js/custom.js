@@ -42,7 +42,6 @@ function logoMove() {
 }
 
 function sendMessage(form, id) {
-    console.log($('#' + id + ' input[name=name]').val())
     if($('#' + id + ' input[name=name]').val() == ''){
         $('#' + id + ' input[name=name]').css('border', '3px solid red')
     }
