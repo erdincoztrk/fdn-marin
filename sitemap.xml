@@ -24,11 +24,10 @@
         <changefreq>always</changefreq>
         <priority>N/A</priority>
     </url>
-
-        <url>
+    <url>
         <loc>https://www.fdnmarine.com/model-detay.php?model=fdnmagnum&amp;mid?=10</loc>
         <lastmod>2024/08/30</lastmod>
         <changefreq>always</changefreq>
         <priority>N/A</priority>
     </url>
-    </urlset>
+</urlset>

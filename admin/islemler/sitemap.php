@@ -32,12 +32,12 @@ $xml = '
 ';
 $getmodels = $db->getRows("SELECT * FROM tbproduct");
 $url = 'https://www.fdnmarine.com/model-detay.php?';
-foreach ($getmodels as $product){
-    $url .= 'model='.$product['product_url'].'&amp;mid?='.$product['product_id'];
+foreach ($getmodels as $product) {
+    $url .= 'model=' . $product['product_url'] . '&amp;mid?=' . $product['product_id'];
     $xml .= '
         <url>
-        <loc>'.$url.'</loc>
-        <lastmod>'.date("Y/m/d").'</lastmod>
+        <loc>' . $url . '</loc>
+        <lastmod>' . date("Y/m/d") . '</lastmod>
         <changefreq>always</changefreq>
         <priority>N/A</priority>
     </url>
