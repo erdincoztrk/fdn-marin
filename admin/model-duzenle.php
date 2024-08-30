@@ -111,7 +111,7 @@ $getModel = $db->getRow("SELECT * FROM tbproduct WHERE product_id = {$_GET['id']
         </div>
 
 
-        <button type="button" class="btn btn-primary" style="margin-bottom:.5rem;" onclick="ChangeTextArea();setEditModel($('#editModelForm'))">Güncelle</button>
+        <button type="button" class="btn btn-primary" style="margin-bottom:.5rem;" onclick="ChangeTextArea();setEditModel($('#editModelForm'), <?=$getModel['product_id']?>)">Güncelle</button>
 
     </form>
 

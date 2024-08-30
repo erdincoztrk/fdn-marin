@@ -53,7 +53,7 @@ $features = [
                         }
                         ?>
                         <div class="btn-box">
-                            <a type="button" id="showPhotoBtn" onclick="void(0);">
+                            <a type="button" id="showPhotoBtn" style="margin-bottom:.5rem;" onclick="void(0);">
                                 Fotoğraflar
                             </a> <a type="button" data-toggle="modal" data-target="#exampleModal" href="#">
                                 Detaylar

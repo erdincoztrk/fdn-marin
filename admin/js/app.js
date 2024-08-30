@@ -157,7 +157,7 @@ function setPhotoDescription(id){
     });
 }
 
-function setEditModel(form){
+function setEditModel(form, id){
     form = form instanceof jQuery ? form[0] : form;
     const file = 'db-transactions/editmodel-transactions.php';
     let formData = new FormData(form);
@@ -170,6 +170,15 @@ function setEditModel(form){
         data: formData,
         success: (data) => {
             dataMessage(data);
+            $.ajax({
+                url: 'model-duzenle.php?id='+id,
+                type: 'GET',
+                success: (response) => {
+                    const $responseHtml = $(response);
+                    const $containerElements = $responseHtml.find('.container').html();
+                    $('.container').html($containerElements);
+                }
+            });
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.error('Error:', textStatus, errorThrown);
@@ -193,7 +202,40 @@ function deleteMessage(id){
                     const $containerElements = $responseHtml.find('.container').html();
                     $('.container').html($containerElements);
                 }
-            })
+            });
+        }
+    });
+}
+
+function adminLogin(form){
+    const file = 'db-transactions/adminlogin-transactions.php';
+    $.ajax({
+        url:file,
+        type:'POST',
+        data:$(form).serialize(),
+        success: (data) => {
+            if(data == 'successful'){
+                smallNotice("Giriş Başarılı! Anasayfaya yönlendiriliyorsunuz.", 'success');
+                setTimeout(() => {
+                    window.location = 'homepage.php';
+                }, 2000)
+            }else{
+                smallNotice('Giriş Başarısız! Kullanıcı adı veya şifre yanlış.', 'error');
+            }
+
+        }
+    });
+}
+
+function adminLogout(){
+    const file = 'db-transactions/adminlogout-transactions.php';
+    $.ajax({
+        url:file,
+        type:'GET',
+        success:(data) => {
+            if(data){
+                window.location = 'index.php'
+            }
         }
     })
 }
