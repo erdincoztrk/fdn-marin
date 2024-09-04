@@ -25,18 +25,9 @@ class dbConnection{
 		return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
 	}
 	public function query($query,$parameters=null){
-		if($parameters){
-			$result = $this->db->prepare($query)->execute($parameters);
-		}
-		else{
-			$result = $this->db->prepare($query)->execute();
-		}
-		if($result){
-			return true;
-		}
-		else{
-			return false;
-		}
+		$result = $parameters ?  $this->db->prepare($query)->execute($parameters) : $this->db->prepare($query)->execute();
+		
+		return $result ? true : false
 	}
 
     public function lastInsertId(){
