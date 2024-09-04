@@ -63,6 +63,34 @@ if ($addQuery) {
         $imagesArray = [$item, 'product', $productid];
         $db->query("INSERT INTO tbimages(image_path, image_field, image_productid) VALUES(?,?,?)", $imagesArray);
     }
+
+// cURL kaynağını başlat
+$ch = curl_init();
+
+// İstek yapacağınız URL
+$url = 'https://www.fdnmarine.com/admin/islemler/sitemap.php';
+
+// cURL seçeneklerini ayarlayın
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); // Yanıtı döndürme, sadece istek yap
+
+// İsteği yap
+curl_exec($ch);
+
+// Hata kontrolü
+if (curl_errno($ch)) {
+   // echo 'cURL error: ' . curl_error($ch);
+} else {
+   // echo 'İstek başarıyla gerçekleştirildi!';
+}
+
+// cURL oturumunu kapat
+curl_close($ch);
+
+
+
+
+
 }
 
 
